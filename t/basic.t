@@ -1,6 +1,6 @@
 use strict;
 use Test::More;
-use IH::Plugin::Hailo;
+use IntelliHome::Plugin::Hailo;
 
 # replace with the actual test
 ok 1;

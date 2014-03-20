@@ -1,11 +1,11 @@
-package IH::Plugin::Hailo;
+package IntelliHome::Plugin::Hailo;
 
 
 =encoding utf-8
 
 =head1 NAME
 
-IH::Plugin::Hailo - Hailo plugin for Google@Home
+IntelliHome::Plugin::Hailo - Hailo plugin for Google@Home
 
 =head1 SYNOPSIS
 
@@ -14,7 +14,7 @@ IH::Plugin::Hailo - Hailo plugin for Google@Home
 
 =head1 DESCRIPTION
 
-IH::Plugin::Hailo is a Hailo plugin that enables learning everything and answer back
+IntelliHome::Plugin::Hailo is a Hailo plugin that enables learning everything and answer back
 
 =head1 METHODS
 
@@ -56,7 +56,7 @@ use 5.008_005;
 our $VERSION = '0.01';
 use Moose;
 use Hailo;
-extends 'IH::Plugin::Base';
+extends 'IntelliHome::Plugin::Base';
 has 'brain' => (is=>"rw", default=> 'googleathome.db');
 has 'Hailo' => (is=>"rw");
 sub BUILD{
@@ -81,7 +81,7 @@ sub install {
             plugin        => "Hailo",
             plugin_method => "speaktome"
         }
-    ) if $self->Parser->Backend->isa("IH::Parser::DB::Mongo");
+    ) if $self->Parser->Backend->isa("IntelliHome::Parser::DB::Mongo");
 
 }
 
@@ -92,7 +92,7 @@ sub remove {
             plugin        => "Hailo",
             plugin_method => "speaktome"
         }
-    ) if $self->Parser->Backend->isa("IH::Parser::DB::Mongo");
+    ) if $self->Parser->Backend->isa("IntelliHome::Parser::DB::Mongo");
 }
 
 1;

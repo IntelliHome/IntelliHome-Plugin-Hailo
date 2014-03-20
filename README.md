@@ -1,6 +1,6 @@
 # NAME
 
-IH::Plugin::Hailo - Hailo plugin for Google@Home
+IntelliHome::Plugin::Hailo - Hailo plugin for Google@Home
 
 # SYNOPSIS
 
@@ -9,8 +9,7 @@ IH::Plugin::Hailo - Hailo plugin for Google@Home
 
 # DESCRIPTION
 
-IH::Plugin::Hailo is a Hailo plugin that enables learning everything and answer back
-
+IntelliHome::Plugin::Hailo is a Hailo plugin that enables learning everything and answer back
 
 ## METHODS
 
