@@ -4,8 +4,10 @@ IntelliHome::Plugin::Hailo - Hailo plugin for Google@Home
 
 # SYNOPSIS
 
-  $ ./intellihome-master -i Hailo #for install
-  $ ./intellihome-master -r Hailo #for remove
+```
+$ ./intellihome-master -i Hailo #for install
+$ ./intellihome-master -r Hailo #for remove
+```
 
 # DESCRIPTION
 
