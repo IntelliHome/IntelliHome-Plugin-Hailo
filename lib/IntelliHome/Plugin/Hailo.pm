@@ -70,8 +70,7 @@ sub speaktome {
     my $Phrase    = join( " ", @{ $Said->result } );
     $self->Hailo->learn($Phrase);
     $self->IntelliHome->Output->info($self->Hailo->reply($Phrase) );
-
-
+    return $Phrase;
 }
 
 sub install {
