@@ -69,30 +69,29 @@ sub speaktome {
     my $Said      = shift;
     my $Phrase    = join( " ", @{ $Said->result } );
     $self->Hailo->learn($Phrase);
-    $self->Parser->Output->info($self->Hailo->reply($Phrase) );
- 
+    $self->IntelliHome->Output->info($self->Hailo->reply($Phrase) );
+
 
 }
 
 sub install {
     my $self = shift;
-    $self->Parser->Backend->installPlugin(
+    $self->IntelliHome->Backend->installPlugin(
         {   regex         => '(.*)',
             plugin        => "Hailo",
             plugin_method => "speaktome"
         }
-    ) if $self->Parser->Backend->isa("IntelliHome::Parser::DB::Mongo");
+    ) if $self->IntelliHome->Backend->isa("IntelliHome::Parser::DB::Mongo");
 
 }
 
 sub remove {
     my $self = shift;
-    $self->Parser->Backend->removePlugin(
-        {   regex         => '(.*)',
+    $self->IntelliHome->Backend->removePlugin(
+        {
             plugin        => "Hailo",
-            plugin_method => "speaktome"
         }
-    ) if $self->Parser->Backend->isa("IntelliHome::Parser::DB::Mongo");
+    ) if $self->IntelliHome->Backend->isa("IntelliHome::Parser::DB::Mongo");
 }
 
 1;
