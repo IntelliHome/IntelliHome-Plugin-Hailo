@@ -1,6 +1,5 @@
 package IntelliHome::Plugin::Hailo;
 
-
 =encoding utf-8
 
 =head1 NAME
@@ -50,26 +49,27 @@ it under the same terms as Perl itself.
 L<Hailo>
 =cut
 
-
 use strict;
 use 5.008_005;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 use Moose;
 use Hailo;
 extends 'IntelliHome::Plugin::Base';
-has 'brain' => (is=>"rw", default=> 'googleathome.db');
-has 'Hailo' => (is=>"rw");
-sub BUILD{
-	my $self=shift;
-	$self->Hailo( Hailo->new( brain => $self->brain ) );
+has 'brain' => ( is => "rw", default => 'googleathome.db' );
+has 'Hailo' => ( is => "rw" );
+
+sub BUILD {
+    my $self = shift;
+    $self->Hailo( Hailo->new( brain => $self->brain ) );
 
 }
+
 sub speaktome {
-    my $self      = shift;
-    my $Said      = shift;
-    my $Phrase    = join( " ", @{ $Said->result } );
+    my $self   = shift;
+    my $Said   = shift;
+    my $Phrase = join( " ", @{ $Said->result } );
     $self->Hailo->learn($Phrase);
-    $self->IntelliHome->Output->info($self->Hailo->reply($Phrase) );
+    $self->IntelliHome->Output->info( $self->Hailo->reply($Phrase) );
     return $Phrase;
 }
 
@@ -77,20 +77,17 @@ sub install {
     my $self = shift;
     $self->IntelliHome->Backend->installPlugin(
         {   regex         => '(.*)',
+            command       => '',
             plugin        => "Hailo",
             plugin_method => "speaktome"
         }
-    ) if $self->IntelliHome->Backend->isa("IntelliHome::Parser::DB::Mongo");
+    );
 
 }
 
 sub remove {
     my $self = shift;
-    $self->IntelliHome->Backend->removePlugin(
-        {
-            plugin        => "Hailo",
-        }
-    ) if $self->IntelliHome->Backend->isa("IntelliHome::Parser::DB::Mongo");
+    $self->IntelliHome->Backend->removePlugin( { plugin => "Hailo", } );
 }
 
 1;
